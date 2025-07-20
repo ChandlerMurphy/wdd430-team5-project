@@ -1,14 +1,15 @@
 import React from "react";
-import CallToAction from "./CallToAction";
-import Logo from "./Logo";
-import NavLinks from "./NavLinks";
+import Sitename from "../component/Sitename";
+import Navbar from "../component/Navbar";
+import PageName from "../component/PageName";
 
 const Header = () => {
   return (
-    <div>
-      <Logo />
-      <NavLinks />
-      <CallToAction />
+    <div className="w-full">
+        {/* header */}
+      <PageName pageName="Handcrafted Homepage" bgColor="bg-accent" />
+      <Navbar />
+      <hr className="bg-accent flex justify-between text-accent" />
     </div>
   );
 };
