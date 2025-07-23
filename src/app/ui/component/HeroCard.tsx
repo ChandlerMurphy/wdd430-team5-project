@@ -9,7 +9,7 @@ interface HeroCardProps {
 const HeroCard = ({ product }: HeroCardProps) => {
   const { image, productName, productOwner, price, ratings } = product;
   return (
-    <div className="heroCards p-4 rounded-lg shadow bg-white flex flex-col items-center gap-2 w-60">
+    <div className="heroCards p-4 rounded-lg shadow bg-white flex flex-col items-center gap-2 w-62">
       <div className="w-full flex justify-center">
         <Image
           alt={image.alt}
