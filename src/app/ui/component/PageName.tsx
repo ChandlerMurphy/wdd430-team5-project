@@ -6,7 +6,7 @@ interface PageName {
 const PageName = ({ pageName, bgColor }: PageName) => {
   return (
     <div
-      className={`${bgColor} w-full py-2 px-2 font-semibold text-primary text-1xl`}
+      className={`${bgColor} text-2xl w-full font-semibold text-white px-2 py-5 text-1xl`}
     >
       <p>{pageName}</p>
     </div>
