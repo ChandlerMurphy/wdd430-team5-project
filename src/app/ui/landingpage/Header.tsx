@@ -6,10 +6,12 @@ import PageName from "../component/PageName";
 const Header = () => {
   return (
     <div className="w-full">
-        {/* header */}
-      <PageName pageName="Handcrafted Homepage" bgColor="bg-accent" />
+      <PageName
+        pageName="Handcrafted Homepage"
+        bgColor="bg-[var(--primary-violet-2)]"
+      />
       <Navbar />
-      <hr className="bg-accent flex justify-between text-accent" />
+      <hr className="text-gray-300 flex justify-between text-accent" />
     </div>
   );
 };
