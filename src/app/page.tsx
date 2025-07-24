@@ -1,7 +1,18 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from "react";
 import Header from "./ui/landingpage/Header";
+import Sitename from "./ui/component/Sitename";
+import Hero from "./ui/landingpage/Hero";
 
-export default function Home() {
-  return <Header />;
-}
+const page = () => {
+  return (
+    <div className="w-full mb-10">
+      <Sitename />
+      <div className="w-[95%] h-auto border border-accent outline-0 m-auto rounded">
+        <Header />
+        <Hero />
+      </div>
+    </div>
+  );
+};
+
+export default page;
