@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div className="w-full mb-10">
       <Sitename />
-      <div className="w-[95%] h-auto border border-accent outline-0 m-auto rounded">
+      <div className="w-[95%] h-auto border border-gray-300 outline-0 m-auto rounded">
         <Header />
         <Hero />
       </div>
