@@ -20,6 +20,15 @@ const Hero = () => {
           >
             {cta.label}
           </Link>
+
+          {/*link "About Us" */}
+            <Link
+              href="/aboutus"
+              className="inline-block bg-gray-300 text-gray-800 font-semibold px-8 py-3 rounded-lg hover:bg-gray-700 hover:text-white transition"
+
+            >
+              Click here to get to know us better
+            </Link>
         </div>
         <div className="flex-1 flex justify-center mt-8 md:mt-0">
           <img
