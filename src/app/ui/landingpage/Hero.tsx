@@ -21,15 +21,6 @@ const Hero = () => {
           >
             {cta.label}
           </Link>
-
-          {/*link "About Us" */}
-            <Link
-              href="/aboutus"
-              className="inline-block bg-gray-300 text-gray-800 font-semibold px-8 py-3 rounded-lg hover:bg-gray-700 hover:text-white transition"
-
-            >
-              Click here to get to know us better
-            </Link>
         </div>
         <div className="flex justify-center mt-8 md:mt-0">
           <Image
@@ -40,8 +31,17 @@ const Hero = () => {
             className="w-64 h-64 object-contain rounded-xl shadow-lg border-4 border-accent/30 bg-white"
           />
         </div>
+        
       </section>
+        <Link
+          href="/aboutus"
+          className="inline-block bg-gray-300 text-gray-800 font-semibold px-8 py-3 rounded-lg hover:bg-gray-700 hover:text-white transition"
+
+        >
+          Click here to get to know us better
+        </Link>
       <HeroCards />
+
     </>
   );
 };
