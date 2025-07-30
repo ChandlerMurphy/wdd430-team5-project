@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 const navLinks = [
   { label: "H-Haven", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/aboutus" },
   { label: "Categories", href: "/categories" },
   { label: "Sell", href: "/sell" },
   { label: "featured", href: "/featured/designs" },
