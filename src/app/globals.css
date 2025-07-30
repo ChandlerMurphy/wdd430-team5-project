@@ -2,17 +2,14 @@
 
 @theme {
   --background: #f0f0f0;
-  --foreground: #171717;
-  --primary-green: #005151;
-  --primary-violet: #8e44ad;
-  --primary-violet-2: #9f87af;
-  --secondary-sable: #eee5dd;
+  --secondary: #e8000c;
+  --tertiary: #000;
 }
 
 @layer base {
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
 }
