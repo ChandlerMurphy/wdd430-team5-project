@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --background: #f0f0f0;
-  --secondary: #e8000c;
-  --tertiary: #000;
+
+  --color-primary: #eee5dd;      /* Soft beige - background / body text */
+  --color-secondary: #8e44ad;    /* Muted lavender - accents, hover */
+  --color-accent: #005151;       /* Deep teal - header/nav background */
+  --color-white: #E7EBFB;
+
+  --background: var(--color-primary);
+  --foreground: var(--color-accent);
+  --header-bg: var(--color-accent);
+  --header-text: var(--color-primary);
+  --hover-accent: var(--color-secondary);
 }
 
 @layer base {
