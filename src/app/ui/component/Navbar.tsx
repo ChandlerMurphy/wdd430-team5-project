@@ -16,16 +16,15 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className="bg-primary py-3 px-6 shadow-md w-full">
-      <ul className="flex items-center justify-between w-full">
+    <nav className="bg-primary shadow-md w-full">
+      <ul className="flex items-center justify-between w-full p-5">
         {navLinks.map((link) => (
           <li key={link.label}>
             <Link
               href={link.href}
               className={clsx(
-                "transition-colors duration-200 px-3 py-1 rounded-md font-semibold text-accent hover:bg-accent/10 hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-accent-foreground",
-                pathname === link.href &&
-                  "bg-accent/20 text-accent-foreground shadow"
+                "transition-colors duration-200 text-2xl p-2",
+                pathname === link.href && ""
               )}
             >
               {link.label}

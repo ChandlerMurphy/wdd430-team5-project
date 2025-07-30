@@ -1,14 +1,16 @@
 import React from "react";
 import HeroCard from "./HeroCard";
 import { products } from "../../../../lib/placeholder";
+import PageName from "./PageName";
 
 const HeroCards = () => {
   return (
     <div className="w-full my-5">
-      <h1 className="bg-accent w-full py-2 px-2 font-semibold text-primary text-1xl">
-        Featured Handcrafted Items
-      </h1>
-      <div className="flex flex-wrap max-w-fit items-center justify-center gap-6 mt-5">
+      <PageName
+        pageName="Featured Handcrafted items"
+        bgColor="bg-[var(--primary-violet-2)]"
+      />
+      <div className="flex justify-between py-5 px-5">
         {products.map((product) => (
           <HeroCard key={product.id} product={product} />
         ))}
