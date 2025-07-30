@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { roboto } from "./ui/fonts";
+import Header from "./ui/component/header/Header";
 export const metadata: Metadata = {
   title: "Handcrafted Haven",
   description:
@@ -14,7 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className}`}>
+      <body className={`${roboto.className} `}>
+        <Header />
         {children}
       </body>
     </html>

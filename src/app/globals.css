@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+
   --color-primary: #eee5dd;      /* Soft beige - background / body text */
   --color-secondary: #8e44ad;    /* Muted lavender - accents, hover */
   --color-accent: #005151;       /* Deep teal - header/nav background */
@@ -17,6 +18,6 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
 }
