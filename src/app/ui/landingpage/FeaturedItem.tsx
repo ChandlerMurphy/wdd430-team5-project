@@ -2,36 +2,42 @@ import React from "react";
 import Image from "next/image";
 import { ProductData } from "../../../../lib/definition";
 
-interface ScrollingArtProps {
-  product: ProductData;
+interface FeaturedItemProps {
+  products: ProductData;
 }
 
-const ScrollingArt = ({ product }: ScrollingArtProps) => {
-  const { image, productName, productOwner, ratings, price } = product;
+const FeaturedItem = ({ products }: FeaturedItemProps) => {
+  const { image, product_name, product_owner, ratings, price } = products;
   return (
-    <div className="flex justify-center items-center py-6">
-      <div className="relative bg-white rounded-2xl shadow-lg w-80 overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-        <span className="absolute top-4 left-4 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+    <div className="flex justify-center items-center py-6 cursor-pointer">
+      <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden w-300 max-w-full hover:shadow-2xl transition-shadow duration-300">
+        <span className="absolute top-4 left-4 bg-gradient-to-r from-secondary to-secondary text-white text-xs font-bold px-3 py-1 rounded-full shadow">
           Featured
         </span>
         <div className="w-full h-56 bg-gray-100 flex items-center justify-center overflow-hidden">
-          <Image
-            className="object-cover w-full h-full"
-            src={image.src}
-            width={320}
-            height={224}
-            alt={image.alt || productName}
-            priority
-          />
+          {image.src ? (
+            <Image
+              className="object-cover w-full h-full"
+              src={image.src}
+              width={320}
+              height={224}
+              alt={image.alt || product_name}
+              priority
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-400 text-2xl">
+              No Image
+            </div>
+          )}
         </div>
         <div className="p-5">
           <h4 className="text-xl font-bold text-gray-800 mb-1 truncate">
-            {productName}
+            {product_name}
           </h4>
           <p className="text-sm text-gray-500 mb-2">
             by{" "}
             <em className="text-[var(--primary-violet)] font-semibold">
-              {productOwner}
+              {product_owner}
             </em>
           </p>
           <div className="flex items-center justify-between mb-2">
@@ -46,10 +52,10 @@ const ScrollingArt = ({ product }: ScrollingArtProps) => {
               </svg>
               {ratings}
             </span>
-            <span className="text-lg text-red-600 font-bold">${price}</span>
+            <span className="text-lg text-secondary font-bold">${price}</span>
           </div>
-          <button className="w-full mt-2 text-white font-semibold py-2 rounded-lg bg-red-500 transition cursor-pointer">
-            View Details
+          <button className="w-full mt-2 text-white font-semibold py-2 rounded-lg bg-secondary transition cursor-pointer">
+            Add to cart
           </button>
         </div>
       </div>
@@ -57,4 +63,4 @@ const ScrollingArt = ({ product }: ScrollingArtProps) => {
   );
 };
 
-export default ScrollingArt;
+export default FeaturedItem;

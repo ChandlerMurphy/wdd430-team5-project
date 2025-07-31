@@ -1,15 +1,15 @@
 import { Timestamp } from "next/dist/server/lib/cache-handlers/types";
 
 export interface ProductData {
-  id: Number;
   image: {
     alt: string;
     src: string;
   };
   quantity: number;
-  category_id: string;
-  productOwner: string;
-  productName: string;
+  category_id: number;
+  product_owner: string;
+  product_name: string;
+  description: string;
   price: number;
   ratings: number;
 }
@@ -22,7 +22,7 @@ export enum UserType {
 }
 
 export interface UserTable {
-  user_id: number;
+  user_id: string;
   name: string;
   email: string;
   password: string;
@@ -33,7 +33,7 @@ export interface UserTable {
 }
 
 //shipping status for Order
-enum shippingStatus {
+enum orderStatus {
   Pending = "pending",
   Shipped = "shipped",
   Delivered = "delivered",
@@ -41,15 +41,15 @@ enum shippingStatus {
 
 export interface Order {
   order_id: number;
-  user_id: number;
+  user_id: string;
   total_amount: number;
-  status: shippingStatus;
+  status: orderStatus;
   order_date: Timestamp;
 }
 
 export interface OrderedItem {
   order_item_id: string;
-  order_id: string;
+  order_id: number;
   product_id: string;
   quantity: number;
   price_at_purchase: number;
@@ -66,21 +66,21 @@ export interface Reviews {
 
 //categories data specification
 export interface Category {
-  category_id: string;
+  category_id: number;
   category_name: CategoryType;
   category_description: string;
 }
 
 export enum CategoryType {
-  Fashion = "fashion",
-  Electronics = "electronics",
-  Furniture = "furniture",
-  Books = "books",
-  Services = "services",
+  Textiles = "textiles",
+  Woodwork = "woodwork",
+  Candles = "candles",
+  Accessories = "accessories",
+  Stationery = "stationery",
 }
 
 export interface Messages {
-  message_id: string;
+  message_id: number;
   sender_id: string;
   receiver_id: string;
   content: string;
