@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { heroData } from "../../../../lib/placeholder";
-import ScrollingArts from "./ScrollingArts";
+import ScrollingArts from "./FeaturedItems";
 
 const Hero = () => {
   const { title, description, cta, featuredItems } = heroData[0];
   return (
     <>
-      <section className="bg-black text-white flex flex-col items-center justify-center h-auto gap-10 py-40">
-        <div className="lg:text-5xl text-2xl md:text-4xl text-red-600 text-center">
+      <section className="bg-accent text-white flex flex-col items-center justify-center h-auto gap-10 pt-40">
+        <div className="lg:text-5xl text-2xl md:text-4xl text-secondary text-center">
           {title.slice(0, 15)}
           <span className="text-white">{title.slice(15, 40)}</span>
         </div>
@@ -17,7 +17,7 @@ const Hero = () => {
         <div className="flex flex-row gap-10">
           <Link
             href={cta.href}
-            className="inline-block bg-red-600 p-4 text-white rounded-lg"
+            className="inline-block bg-secondary p-4 text-white rounded-lg"
           >
             {cta.label}
           </Link>
@@ -28,7 +28,9 @@ const Hero = () => {
             {featuredItems.label}
           </Link>
         </div>
-        <ScrollingArts />
+        <div className="bg-white w-full">
+          <ScrollingArts />
+        </div>
       </section>
     </>
   );

@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <div className="max-w-5xl m-auto py-30 px-6 sm:px-12 text-black">
       <div className="border border-gray-300 rounded-xl p-8 shadow-sm bg-white">
-        <h1 className="text-3xl font-extrabold text-center text-black mb-6">
+        <h1 className="text-3xl font-extrabold text-center text-secondary mb-6">
           About us
         </h1>
 
@@ -35,7 +35,7 @@ const AboutUs = () => {
 
         <section className="flex flex-col md:flex-row-reverse items-center gap-8 mb-16">
           <div className="md:flex-1 text-center md:text-left">
-            <h2 className="text-3xl font-semibold mb-4 text-accent">
+            <h2 className="text-3xl font-semibold mb-4 text-black">
               Our Mission
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -61,9 +61,7 @@ const AboutUs = () => {
         </section>
 
         <section className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-semibold mb-4 text-accent">
-            Who We Are
-          </h2>
+          <h2 className="text-3xl font-semibold mb-4 text-black">Who We Are</h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
             We are a small, dedicated team that values community, creativity,
             and user empowerment. Thanks for being part of our journey!
@@ -80,7 +78,7 @@ const AboutUs = () => {
         <div className="mt-12 text-center">
           <Link
             href="/"
-            className="inline-block bg-gray-300 text-gray-800 font-semibold px-8 py-3 rounded-lg hover:bg-gray-700 hover:text-white transition"
+            className="inline-block bg-secondary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-100 opacity-80 transition-opacity"
           >
             Back to home page
           </Link>

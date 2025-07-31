@@ -1,12 +1,16 @@
 import { UserType } from "../../../lib/definition";
+import Link from "next/link";
 
 const SignupPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--background)] px-4 py-20 md:py-32 lg:py-25">
+    <div className="min-h-screen text-black flex items-center justify-center bg-[var(--background)] px-4 py-30 md:py-30 lg:py-25">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
+        <h2 className="text-2xl font-bold text-center text-accent mb-6">
           Sign Up
         </h2>
+        <p className="text-center my-5">
+          Create an account to shop or display your artisans{" "}
+        </p>
         <form className="space-y-6">
           <div>
             <label className="block font-semibold mb-1">Name</label>
@@ -78,19 +82,19 @@ const SignupPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-red-600 text-white font-bold py-2 rounded hover:bg-red-400 transition"
+            className="w-full bg-accent text-white font-bold py-2 rounded hover:opacity-100 opacity-90 transition-opacity cursor-pointer"
           >
             Sign Up
           </button>
         </form>
         <div className="text-center mt-4 text-sm text-gray-500">
           Already have an account?{" "}
-          <a
+          <Link
             href="/login"
-            className="text-red-600 font-semibold hover:underline"
+            className="text-secondary font-semibold hover:underline"
           >
             Log in
-          </a>
+          </Link>
         </div>
       </div>
     </div>
