@@ -1,47 +1,37 @@
 import Link from "next/link";
-import HeroCards from "../component/HeroCards";
 import { heroData } from "../../../../lib/placeholder";
-import Image from "next/image";
+import ScrollingArts from "./FeaturedItems";
 
 const Hero = () => {
-  const { title, description, cta, image } = heroData[0];
+  const { title, description, cta, featuredItems } = heroData[0];
   return (
     <>
-      <section className="flex flex-col md:flex-row items-center justify-between p-5">
-        <div className="flex-1 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-accent mb-4">
-            {title}
-          </h1>
-          <p className="text-lg md:text-2xl text-accent-foreground mb-6 max-w-xl mx-auto md:mx-0">
-            {description}
-          </p>
+      <section className="bg-accent text-white flex flex-col items-center justify-center h-auto gap-10 pt-40">
+        <div className="lg:text-5xl text-2xl md:text-4xl text-secondary text-center">
+          {title.slice(0, 15)}
+          <span className="text-white">{title.slice(15, 40)}</span>
+        </div>
+        <p className="max-w-2xl w-[80%] m-auto text-center lg:text-3xl text-base md:text-3xl">
+          {description}
+        </p>
+        <div className="flex flex-row gap-10">
           <Link
             href={cta.href}
-            className="inline-block bg-accent text-primary rounded-lg"
+            className="inline-block bg-secondary p-4 text-white rounded-lg"
           >
             {cta.label}
           </Link>
+          <Link
+            href={featuredItems.href}
+            className="inline-block border-2 border-white p-4 text-white rounded-lg"
+          >
+            {featuredItems.label}
+          </Link>
         </div>
-        <div className="flex justify-center mt-8 md:mt-0">
-          <Image
-            width={100}
-            height={100}
-            src={image.src}
-            alt={image.alt}
-            className="w-64 h-64 object-contain rounded-xl shadow-lg border-4 border-accent/30 bg-white"
-          />
+        <div className="bg-white w-full">
+          <ScrollingArts />
         </div>
-        
       </section>
-        <Link
-          href="/aboutus"
-          className="inline-block bg-gray-300 text-gray-800 font-semibold px-8 py-3 rounded-lg hover:bg-gray-700 hover:text-white transition"
-
-        >
-          Click here to get to know us better
-        </Link>
-      <HeroCards />
-
     </>
   );
 };

@@ -1,0 +1,17 @@
+{
+  "sqltools.connections": [
+    {
+      "pgOptions": {
+        "ssl": {
+          "rejectUnauthorized": true
+        }
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "driver": "PostgreSQL",
+      "name": "handcrafted haven",
+      "database": "handcrafted haven",
+      "connectString": "postgres://neondb_owner:npg_vKRkWBUVa4Z3@ep-square-credit-ad7yl73x-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require  "
+    }
+  ]
+}
