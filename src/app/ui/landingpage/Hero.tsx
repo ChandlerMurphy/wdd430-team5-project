@@ -17,6 +17,7 @@ const Hero = () => {
         <div className="flex flex-row gap-10">
           <Link
             href={cta.href}
+            style={{ backgroundColor: "#7c309cff" }}
             className="inline-block bg-secondary p-4 text-white rounded-lg"
           >
             {cta.label}

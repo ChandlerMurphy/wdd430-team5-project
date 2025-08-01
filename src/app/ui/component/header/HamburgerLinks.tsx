@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { GoRepoLocked } from "react-icons/go";
+// import { GoRepoLocked } from "react-icons/go";
 
 const hamburgerLinks = [
   { label: "H-Haven", href: "/" },
@@ -37,7 +37,8 @@ const HamburgerLinks = () => {
         <li>
           {" "}
           <Link
-            className="bg-red-700 w-40 text-center block p-2 rounded"
+            style={{ backgroundColor: "#960005" }}
+            className="w-40 text-center block p-2 rounded text-white"
             href={"/register"}
           >
             Open an account

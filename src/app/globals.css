@@ -3,8 +3,8 @@
 @theme {
   --background-color: #f9f9f9;
   --color-primary: #eee5dd; /* Soft beige - background / body text */
-  --color-secondary: #8e44ad; /* Muted lavender - accents, hover */
-  --color-accent: #005151; /* Deep teal - header/nav background */
+  --color-secondary: #CE94E7; /* Muted lavender - accents, hover */
+  --color-accent: #014040; /* Deep teal - header/nav background */
   --color-white: #fff;
 
   --background: var(--background-color);

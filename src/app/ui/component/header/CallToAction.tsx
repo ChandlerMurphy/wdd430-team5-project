@@ -5,7 +5,11 @@ import { GoRepoLocked } from "react-icons/go";
 const CallToAction = () => {
   return (
     <div className="justify-between gap-2 hidden lg:flex xl:flex">
-      <Link className="bg-secondary p-2 rounded" href={"/register"}>
+      
+      <Link
+      className="p-2 rounded text-white"
+      style={{ backgroundColor: "#7c309cff" }}
+      href={"/register"}>
         Open an account
       </Link>
       <Link
