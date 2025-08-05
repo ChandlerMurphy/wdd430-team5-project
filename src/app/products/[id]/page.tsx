@@ -1,57 +1,20 @@
-'use client';
+import { fetchProductById , fetchReviewsByProductId } from 'lib/data'
+import { notFound } from 'next/navigation';
+import ProductPage from '@/app/ui/products/ProductPage';
 
-import { useState } from 'react';
-import ReviewForm from '@/app/ui/review/ReviewForm';
-import PrimaryButton from '@/app/ui/component/PrimaryButton';
+interface PageProps {
+  params: {id: string};
+}
 
-export default function Page() {
+export default async function Page({params}: PageProps) {
 
-    const [isOpen, setIsOpen] = useState(false);
+  const product = await fetchProductById(params.id);
+  if(!product) notFound();
 
-    const openModal = () => setIsOpen(true);
-    const closeModal = () => setIsOpen(false);
+  const reviews = await fetchReviewsByProductId(params.id);
 
-  return ( 
-    <div className='p-6'>
-        {/*  <Image/> */}
-        <div className='md:w-1/2'>
-            <img 
-                src="favicon.ico" 
-                alt="Product" 
-                className='w-full rounded shadow'
-            />
-        </div>
+  return (
+    <ProductPage product={product} reviews={reviews}></ProductPage>
+  )
 
-        {/* Text: name + description + average rating */}
-        <div className='md: w-1/2'>
-            <h1 className="text-2xl font-bold mb-2">Name of the product</h1>
-            <p className="text-gray-600 mb-4">A few description</p>
-            {/* Avarege Rating */}
-            <div className='Flex items-center gap-1'>
-                {'⭐'.repeat(4)}
-                <span className='text-sm text-gray-500'>(4.0)</span>
-            </div>
-        </div>
-            {/*  <ReviewList/> */}
-        <div>    
-            {/*  <Button/> */}
-            <PrimaryButton onClick={openModal}>Add a Review</PrimaryButton>
-
-            {/* Modal */}
-            {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded shadow-lg w-full max-w-lg relative">
-                        <button
-                            onClick={closeModal}
-                            className="absolute top-2 right-2 text-gray-500 hover:text-black"
-                            >
-                            X
-                        </button>
-                        <ReviewForm productId="123" onSubmit={closeModal} />
-                    </div>
-                </div>
-            )}
-        </div>
-    </div>   
-    );
 }

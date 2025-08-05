@@ -19,7 +19,7 @@ export default function PrimaryButton({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`bg-accent text-white px-8 py-3 inline-block rounded-lg hover:bg-secondary disabled:opacity-50 transition ${roboto.className}`}
+      className={`bg-accent text-white px-8 py-2 font-semibold rounded-lg hover:bg-secondary disabled:opacity-50 transition m-4 ${roboto.className}`}
     >
       {children}
     </button>
