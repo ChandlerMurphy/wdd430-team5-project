@@ -8,7 +8,7 @@ const navLinks = [
   { label: "H-Haven", href: "/" },
   { label: "About", href: "/aboutus" },
   { label: "Categories", href: "/categories" },
-  { label: "Sell", href: "/sell" },
+  { label: "Sell", href: "/products/sell" },
   { label: "featured", href: "/featured/designs" },
   { label: "Cart", href: "/cart" },
 ];

@@ -1,7 +1,6 @@
 
 import { allProductsData } from '@/app/query/query';
 import ProductCard from '@/app/ui/products/ProductCard';
-import { PredefinedCategoriesData } from 'lib/placeholder';
 import { ProductData } from 'lib/definition';
 import CategorySidebar from '@/app/ui/products/CategorySidebar';
 
