@@ -173,6 +173,20 @@ const CreateMessagesTable = async () => {
   return InsertMessages;
 };
 
+const CreateReviewsTable = async () => {
+  await sql`
+    CREATE TABLE IF NOT EXISTS reviews (
+      review_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+      user_name TEXT NOT NULL,
+      product_id INTEGER NOT NULL,
+      rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+      comment TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT NOW(),
+      FOREIGN KEY (product_id) REFERENCES products(product_id)
+)
+  `
+}
+
 export async function GET() {
   try {
     await sql.begin(async (sql) => {
@@ -182,6 +196,7 @@ export async function GET() {
       await CreateOrderTable();
       await CreateOrderItemTable();
       await CreateMessagesTable();
+      await CreateReviewsTable();
     });
 
     return Response.json({ message: "Database seeded successfully" });
