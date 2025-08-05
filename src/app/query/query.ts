@@ -12,3 +12,14 @@ export const featureditemsData = async () => {
     console.error(err);
   }
 };
+
+export const allProductsData = async () => {
+  try {
+    const data = await sql <
+      ProductData[]
+    > `SELECT * FROM products ORDER BY product_name`;
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+}
