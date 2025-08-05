@@ -287,3 +287,49 @@ export const heroData = [
     },
   },
 ];
+
+export const Reviews = [
+  { 
+    user_name: 'Anna',
+    product_id: 1, 
+    rating: 4, 
+    comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 
+    created_at: '2025-08-01T10:00:00Z', 
+  },
+    { 
+    user_name: 'Name 1',
+    product_id: 1, 
+    rating: 2, 
+    comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 
+    created_at: '2025-06-01T10:00:00Z',
+  },
+    { 
+    user_name: 'Roman',
+    product_id: 1, 
+    rating: 3, 
+    comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 
+    created_at: '2025-07-01T10:00:00Z'
+  },
+    { 
+    user_name: 'Gregory',
+    product_id: 1, 
+    rating: 5, 
+    comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 
+    created_at: '2025-08-11T10:00:00Z'
+  },
+    { 
+    user_name: 'Arthur',
+    product_id: 1, 
+    rating: 2, 
+    comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 
+    created_at: '2025-08-21T10:00:00Z',
+  },
+    { 
+    user_name: 'Clara',
+    product_id: 1, 
+    rating: 1, 
+    comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 
+    created_at: '2025-08-22T10:00:00Z'
+  },
+
+]
