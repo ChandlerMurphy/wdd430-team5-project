@@ -3,12 +3,20 @@
 import { useState } from "react";
 import PrimaryButton from "../component/PrimaryButton";
 
-export default function ReviewForm({productId, onSubmit} : {productId: string; onSubmit?: () => void;}) {
+export default function ReviewForm({
+    productId, 
+    onSubmit,
+} : {
+    productId: number; 
+    onSubmit?: () => void;
+}) {
     const [user, setUser] = useState('');
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState(5);
     const [loading, setLoading] = useState(false);
+    const [sucess, setSucess] = useState(false);
 
+    const isSubmitDisabled = loading || !user.trim() || !comment.trim();
 
     const handleSubmit = async (e:React.FormEvent) => {
         e.preventDefault();
@@ -25,24 +33,38 @@ export default function ReviewForm({productId, onSubmit} : {productId: string; o
                 date,
             };
 
-            console.log(reviewData);
+            const res = await fetch('/api/reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(reviewData),
+            });
 
-            onSubmit?.();
+            if (!res.ok) {
+            throw new Error('Failed to submit review');
+            }
 
+            setSucess(true);
+            onSubmit?.(); //close modal
+
+            //clean the form
             setUser('');
             setComment('');
             setRating(5);
-            } catch (err) {
-            console.error("Failed to submit review", err);
+            }  catch (err) {
+                console.error('Failed to submit review', err);
+                alert('Failed to submit review. Please try again.');
             } finally {
-            setLoading(false);
+                setLoading(false);
             }
-    };
-    
+        };
     return (
         <form onSubmit={handleSubmit}>
             <h2 className="text-xl font-semibold">Leave a Review</h2>
-            <div>
+            { sucess && (
+                <p className="text-green-600 mb-4">Review submitted successfully!</p>
+            )}
+            {/* Your Name */}
+            <div className="mb-4">
                 <label htmlFor="user">Your Name</label>
                 <input 
                     id="user" 
@@ -54,10 +76,13 @@ export default function ReviewForm({productId, onSubmit} : {productId: string; o
                     placeholder="Enter your name"
                     />
             </div>
-
-            <div>
-                <label htmlFor="ratring" className="block text-sm font-medium">Rating</label>
+            {/* Rating */}
+            <div className="mb-4">
+                <label htmlFor="ratring" className="block text-sm font-medium">
+                    Rating
+                </label>
                 <select 
+                    id="rating"
                     value = {rating}
                     onChange={(e) => setRating(Number(e.target.value))}
                     className="mt-1 block w-full rounded border border-gray-300 p-2">
@@ -69,6 +94,7 @@ export default function ReviewForm({productId, onSubmit} : {productId: string; o
                 </select>
             </div>
 
+            {/* Comment */}
             <div>
                 <label htmlFor="comment">Comment</label>
                 <textarea 
@@ -81,7 +107,7 @@ export default function ReviewForm({productId, onSubmit} : {productId: string; o
                     />
 
             </div>
-                <PrimaryButton type="submit" disabled={loading}>
+                <PrimaryButton type="submit" disabled={isSubmitDisabled}>
                      {loading ? 'Submitting...' : 'Submit Review'}
                 </PrimaryButton>
         </form>

@@ -1,10 +1,8 @@
 import { Timestamp } from "next/dist/server/lib/cache-handlers/types";
 
 export interface ProductData {
-  image: {
-    alt: string;
-    src: string;
-  };
+  product_id: number; 
+  image: string;
   quantity: number;
   category_id: number;
   product_owner: string;
@@ -57,7 +55,7 @@ export interface OrderedItem {
 
 export interface Reviews {
   review_id: string;
-  user_id: string;
+  user_name: string;
   product_id: string;
   rating: number;
   comment: string;
