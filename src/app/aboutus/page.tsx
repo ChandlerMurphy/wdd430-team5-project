@@ -78,8 +78,8 @@ const AboutUs = () => {
         <div className="mt-12 text-center">
           <Link
             href="/"
-            className="inline-block bg-secondary text-white font-semibold px-8 py-3 rounded-lg hover:opacity-100 opacity-80 transition-opacity"
-          >
+            className="inline-block bg-[#7c309c] hover:bg-[#4d0c68] p-4 text-white rounded-lg"
+            >
             Back to home page
           </Link>
         </div>
