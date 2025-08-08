@@ -1,38 +1,17 @@
-// const UserProfile = () => {
-//   // Replace with real user data later
-//   const user = {
-//     name: "Jane Doe",
-//     email: "janedoe@example.com",
-//     joined: "January 2024",
-//   };
+"use client";
 
-//   return (
-//     <section className="mb-8">
-//       <h2 className="text-xl font-semibold mb-4">User Info</h2>
-//       <ul className="space-y-2">
-//         <li><strong>Name:</strong> {user.name}</li>
-//         <li><strong>Email:</strong> {user.email}</li>
-//         <li><strong>Member Since:</strong> {user.joined}</li>
-//       </ul>
-//     </section>
-//   );
-// };
-
-// export default UserProfile;
-
-
-// ---------
+import { useUser } from "../context/userContext";
 
 const UserProfile = () => {
-  const user = {
-    name: "Jane Doe",
-    email: "janedoe@example.com",
-    joined: "January 2024",
-  };
+  const { user } = useUser();
+
+  if (!user) {
+    return <p>No user data available. Please log in.</p>;
+  }
 
   return (
     <section className="mb-8 flex items-center space-x-6">
-      {/* Placeholder profile image */}
+      {/* Profile image placeholder */}
       <div className="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 text-2xl font-bold">
         {user.name.charAt(0)}
       </div>
