@@ -1,10 +1,12 @@
+import { allProductsData } from "../../../lib/data";
+import ProductCard from "@/app/ui/products/ProductCard";
+import { ProductData } from "lib/definition";
+import CategorySidebar from "@/app/ui/products/CategorySidebar";
 
-import { allProductsData } from '@/app/query/query';
-import ProductCard from '@/app/ui/products/ProductCard';
-import { ProductData } from 'lib/definition';
-import CategorySidebar from '@/app/ui/products/CategorySidebar';
-
-function filterProductsByCategory(products: ProductData[], categoryId: number | null) {
+function filterProductsByCategory(
+  products: ProductData[],
+  categoryId: number | null
+) {
   if (categoryId === null) return products;
   return products.filter((p) => p.category_id === categoryId);
 }
@@ -13,14 +15,19 @@ interface ProductsPageProps {
   searchParams: Promise<{ category?: string }>;
 }
 
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const params = await searchParams; 
+export default async function ProductsPage({
+  searchParams,
+}: ProductsPageProps) {
+  const params = await searchParams;
   const products = await allProductsData();
 
   const selectedCategory = params?.category ? Number(params.category) : null;
-  const filteredProducts = filterProductsByCategory(products ?? [], selectedCategory);
+  const filteredProducts = filterProductsByCategory(
+    products ?? [],
+    selectedCategory
+  );
 
-    return (
+  return (
     <div className="flex gap-6 p-6">
       {/* Sidebar */}
       <CategorySidebar></CategorySidebar>

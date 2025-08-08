@@ -57,3 +57,25 @@ export async function fetchProductByCategoryId(category_id: number): Promise<Pro
   `;
   return result
 }
+
+export const featureditemsData = async () => {
+  try {
+    const data = await sql<
+      ProductData[]
+    >`SELECT * FROM products ORDER BY added_at DESC LIMIT 5`;
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const allProductsData = async () => {
+  try {
+    const data = await sql <
+      ProductData[]
+    > `SELECT * FROM products ORDER BY product_name`;
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+}

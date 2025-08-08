@@ -1,15 +1,15 @@
-import { fetchProductById , fetchReviewsByProductId } from 'lib/data'
+import { fetchProductById, fetchReviewsByProductId } from 'lib/data'
 import { notFound } from 'next/navigation';
 import ProductPage from '@/app/ui/products/ProductPage';
 
 interface PageProps {
-  params: {id: string};
+  params: { id: string };
 }
 
-export default async function Page({params}: PageProps) {
+export default async function Page({ params }: PageProps) {
 
   const product = await fetchProductById(params.id);
-  if(!product) notFound();
+  if (!product) notFound();
 
   const reviews = await fetchReviewsByProductId(params.id);
 

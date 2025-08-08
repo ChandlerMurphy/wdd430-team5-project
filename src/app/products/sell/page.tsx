@@ -1,10 +1,11 @@
 import SellForm from "@/app/ui/products/SellForm";
-import React from "react";
+import { fetchCategories } from "lib/data";
 
-const page = () => {
+const page = async () => {
+  const categories = await fetchCategories();
   return (
     <div>
-      <SellForm />
+      <SellForm categories={categories} />
     </div>
   );
 };
