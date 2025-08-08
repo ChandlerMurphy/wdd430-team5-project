@@ -1,6 +1,6 @@
 import React from "react";
 import FeaturedItem from "./FeaturedItem";
-import { featureditemsData } from "@/app/query/query";
+import { featureditemsData } from "../../../../lib/data";
 
 const FeaturedItems = async () => {
   const featureItemProducts = await featureditemsData();
