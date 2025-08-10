@@ -264,11 +264,11 @@ export const heroData = [
       "Shop one-of-a-kind items made with love by talented artisans. Find the perfect gift or treat yourself to something special!",
     cta: {
       label: "Browse Collection",
-      href: "/browse",
+      href: "/products",
     },
     featuredItems: {
-      label: "Browse latest art piece",
-      href: "/new",
+      label: "Join to add your art piece",
+      href: "/register",
     },
   },
 ];

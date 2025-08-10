@@ -1,8 +1,11 @@
 "use server";
 import { z } from "zod";
+import { writeFile } from "fs/promises";
+import { join } from "path";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import postgres from "postgres";
+import bcrypt from "bcrypt";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 //sellformData validation
@@ -71,4 +74,94 @@ export async function sellProductData(
   redirect("/products");
 }
 
+//user signup form data validation decalration
+export type SignUpState = {
+  errors: {
+    name?: string[];
+    email?: string[];
+    password?: string[];
+    user_type?: string[];
+    profile_picture?: string[];
+    bio?: string[];
+  };
+  message?: string | null;
+};
 
+const signUpSchema = z.object({
+  name: z.string().min(3, "Please enter an appropriate name"),
+  email: z.string().email("Please enter a valid email address"),
+  password: z.coerce
+    .string()
+    .min(6, "Password must be at least six characters"),
+  user_type: z.string().nonempty("User Type is required"),
+  profile_picture: z
+    .string()
+    .nonempty("Profile picture is required")
+    .optional(),
+  bio: z.string().min(10, "Please enter an appropriate bio"),
+});
+
+export async function addUser(
+  prevState: SignUpState,
+  formData: FormData
+): Promise<SignUpState> {
+  const file = formData.get("profile_picture") as File | null;
+
+  const plainData = Object.fromEntries(
+    Array.from(formData.entries()).filter(([key]) => key !== "profile_picture")
+  );
+
+  const validatedData = signUpSchema.safeParse(plainData);
+
+  if (!validatedData.success) {
+    return {
+      errors: validatedData.error.flatten().fieldErrors,
+      message: null,
+    };
+  }
+
+  const { name, email, password, user_type, bio } = validatedData.data;
+  const hashed_password = await bcrypt.hash(password, 12);
+
+  let profilePicturePath: string | null = null;
+
+  if (file && file.size > 0) {
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+    const filename = `${Date.now()}-${file.name}`;
+    const filepath = join(process.cwd(), "public", "uploads", filename);
+
+    await writeFile(filepath, buffer);
+    profilePicturePath = `/uploads/${filename}`;
+  }
+
+  try {
+    // ✅ Check if email already exists
+    const existing = await sql`
+      SELECT user_id FROM users WHERE email = ${email} LIMIT 1
+    `;
+
+    if (existing.length > 0) {
+      return {
+        errors: { email: ["This email is already registered"] },
+        message: null,
+      };
+    }
+
+    await sql`
+      INSERT INTO users (name, email, password, user_type, profile_picture, bio)
+      VALUES (${name}, ${email}, ${hashed_password}, ${user_type}, ${profilePicturePath}, ${bio})
+    `;
+
+    return {
+      errors: {},
+      message: "User created successfully Redirecting...",
+    };
+  } catch (error) {
+    console.error("User inserting error", error);
+    return {
+      errors: { email: ["Something went wrong while creating your account"] },
+      message: null,
+    };
+  }
+}
