@@ -7,10 +7,9 @@ import clsx from "clsx";
 
 const hamburgerLinks = [
   { label: "H-Haven", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Categories", href: "/categories" },
-  { label: "Sell", href: "/sell" },
-  { label: "featured", href: "/featured/designs" },
+  { label: "About", href: "/aboutus" },
+  { label: "Products", href: "/products" },
+  { label: "Sell", href: "/products/sell" },
   { label: "Cart", href: "/cart" },
 ];
 
@@ -18,7 +17,7 @@ const HamburgerLinks = () => {
   const pathname = usePathname();
   return (
     <nav>
-      <ul className="bg-black/90 flex z-50 flex-col gap-4 p-4 rounded-lg shadow-lg">
+      <ul className="bg-accent flex z-50 flex-col gap-4 p-4 rounded-lg shadow-lg">
         {hamburgerLinks.map((link) => (
           <li key={link.label}>
             <Link
@@ -26,7 +25,7 @@ const HamburgerLinks = () => {
               className={clsx(
                 "transition-colors duration-200 text-base sm:text-base px-4 py-2 rounded",
                 pathname === link.href
-                  ? "bg-[var(--primary-violet)]/80 text-white font-bold shadow"
+                  ? "bg-white text-black font-bold shadow"
                   : "hover:bg-white/10 text-white"
               )}
             >

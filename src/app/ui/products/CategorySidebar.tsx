@@ -1,6 +1,7 @@
-import { allProductsData } from '@/app/query/query';
-import { PredefinedCategoriesData } from 'lib/placeholder';
-import { ProductData } from 'lib/definition';
+import { allProductsData } from '../../../../lib/data';
+import { PredefinedCategoriesData } from '../../../../lib/placeholder';
+import { ProductData } from '../../../../lib/definition';
+import Link from 'next/link';
 
 function filterProductsByCategory(products: ProductData[], categoryId: number | null) {
   if (categoryId === null) return products;
@@ -12,14 +13,15 @@ export default async function CategorySidebar({
   searchParams,
 }: {
   searchParams?: { category?: string };
-}){
+}) {
   const products = await allProductsData();
   const selectedCategory = searchParams?.category ? Number(searchParams.category) : null;
   const filteredProducts = filterProductsByCategory(products ?? [], selectedCategory);
 
 
   return (
-    <aside className="w-48">
+    <aside className="w-48 relative">
+      <div className="sticky top-30 left-0">
         <h2 className="font-bold mb-4">Categories</h2>
         <ul>
           <li
@@ -32,14 +34,16 @@ export default async function CategorySidebar({
               key={cat.category_id}
               className={`cursor-pointer mb-2 rounded pl-4 pr-2 py-2 ${selectedCategory === cat.category_id ? 'font-bold' : ''} hover:bg-secondary hover:text-white text-gray-700`}
             >
-              <a
+              <Link
                 href={`/products?category=${cat.category_id}`}
               >
                 {cat.category_name.charAt(0).toUpperCase() + cat.category_name.slice(1)}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
-      </aside>
+      </div>
+    </aside>
+
   );
 }

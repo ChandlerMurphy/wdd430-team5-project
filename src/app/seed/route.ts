@@ -137,7 +137,7 @@ const CreateProductTable = async () => {
           ${product.category_id},
           ${product.product_name},
           ${product.product_owner},
-          ${product.image?.src}, 
+          ${product.image}, 
           ${product.ratings}
         )
         ON CONFLICT (product_id) DO NOTHING
@@ -184,8 +184,8 @@ const CreateReviewsTable = async () => {
       created_at TIMESTAMP DEFAULT NOW(),
       FOREIGN KEY (product_id) REFERENCES products(product_id)
 )
-  `
-}
+  `;
+};
 
 export async function GET() {
   try {

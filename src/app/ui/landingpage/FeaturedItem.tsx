@@ -15,13 +15,13 @@ const FeaturedItem = ({ products }: FeaturedItemProps) => {
           Featured
         </span>
         <div className="w-full h-56 bg-gray-100 flex items-center justify-center overflow-hidden">
-          {image.src ? (
+          {image ? (
             <Image
               className="object-cover w-full h-full"
-              src={image.src}
+              src={image}
               width={320}
               height={224}
-              alt={image.alt || product_name}
+              alt={product_name}
               priority
             />
           ) : (

@@ -159,10 +159,7 @@ export const OrderedItems = [
 export const Products = [
   {
     product_name: "Handwoven Macrame Wall Hanging",
-    image: {
-      alt: "Cream macrame wall hanging on wooden dowel",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
-    },
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
     price: 45.0,
     quantity: 30,
     description:
@@ -173,10 +170,7 @@ export const Products = [
   },
   {
     product_name: "Rustic Handmade Wooden Bowl",
-    image: {
-      alt: "Carved wooden bowl with natural grain pattern",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
-    },
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
     price: 32.5,
     quantity: 20,
     description:
@@ -187,10 +181,7 @@ export const Products = [
   },
   {
     product_name: "Hand-Poured Soy Candle – Lavender Scent",
-    image: {
-      alt: "Lavender soy candle in glass jar with dried flowers",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
-    },
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
     price: 18.0,
     quantity: 100,
     description:
@@ -201,10 +192,7 @@ export const Products = [
   },
   {
     product_name: "Crocheted Cotton Coasters (Set of 4)",
-    image: {
-      alt: "Beige crocheted coasters on wooden table",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
-    },
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
     price: 15.0,
     quantity: 80,
     description:
@@ -215,10 +203,7 @@ export const Products = [
   },
   {
     product_name: "Hand-Stitched Leather Journal",
-    image: {
-      alt: "Brown leather journal with hand-sewn binding",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
-    },
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4935oZkz0b9ORKSLlbtJeS_AXpemEiOCdcA&s",
     price: 38.0,
     quantity: 50,
     description:
@@ -279,11 +264,11 @@ export const heroData = [
       "Shop one-of-a-kind items made with love by talented artisans. Find the perfect gift or treat yourself to something special!",
     cta: {
       label: "Browse Collection",
-      href: "/browse",
+      href: "/products",
     },
     featuredItems: {
-      label: "Browse latest art piece",
-      href: "/new",
+      label: "Join to add your art piece",
+      href: "/register",
     },
   },
 ];
