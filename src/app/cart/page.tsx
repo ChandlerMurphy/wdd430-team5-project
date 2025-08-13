@@ -29,7 +29,7 @@ export default function CartPage() {
                 />
               )}
               <span>
-                {product.name} - R$ {product.price.toFixed(2)}
+                {product.name} - $ {product.price.toFixed(2)}
               </span>
             </div>
             <button
@@ -46,7 +46,7 @@ export default function CartPage() {
       <div className="mt-6 p-4 border-t">
         <div className="flex justify-between text-lg font-semibold">
           <span>Total:</span>
-          <span>R$ {total.toFixed(2)}</span>
+          <span>$ {total.toFixed(2)}</span>
         </div>
         <button
           className="w-full mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition"
