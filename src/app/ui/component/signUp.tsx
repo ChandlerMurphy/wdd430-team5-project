@@ -5,6 +5,7 @@ import { SignUpState, addUser } from "lib/actions";
 import React, { useActionState, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Spinner from "../loading/Spinner";
+import Image from "next/image";
 
 const SignupPage = () => {
   const router = useRouter();
@@ -115,7 +116,9 @@ const SignupPage = () => {
                 >
                   Your Product Image
                 </label>
-                <img
+                <Image
+                  width={40}
+                  height={48}
                   src={preview}
                   alt="Your Product Image"
                   className="w-full h-48 object-cover"

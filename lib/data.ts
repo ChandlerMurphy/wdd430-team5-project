@@ -1,9 +1,11 @@
-import postgres from 'postgres';
-import { Category, ProductData, Reviews } from './definition';
+import postgres from "postgres";
+import { Category, ProductData, Reviews } from "./definition";
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
-export async function fetchProductById(id: string): Promise<ProductData | null> {
+export async function fetchProductById(
+  id: number
+): Promise<ProductData | null> {
   try {
     const data = await sql<ProductData[]>`
         SELECT
@@ -22,12 +24,12 @@ export async function fetchProductById(id: string): Promise<ProductData | null> 
 
     return data.at(0) ?? null;
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch product.');
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch product.");
   }
 }
 
-export async function fetchReviewsByProductId(id: string): Promise<Reviews[]> {
+export async function fetchReviewsByProductId(id: number): Promise<Reviews[]> {
   try {
     const reviews = await sql<Reviews[]>`
       SELECT review_id, user_name, product_id, rating, comment, created_at
@@ -37,8 +39,8 @@ export async function fetchReviewsByProductId(id: string): Promise<Reviews[]> {
     `;
     return reviews;
   } catch (error) {
-    console.error('Error fetching reviews:', error);
-    throw new Error('Failed to fetch reviews.');
+    console.error("Error fetching reviews:", error);
+    throw new Error("Failed to fetch reviews.");
   }
 }
 
@@ -50,12 +52,14 @@ export async function fetchCategories(): Promise<Category[]> {
   return result;
 }
 
-export async function fetchProductByCategoryId(category_id: number): Promise<ProductData[]> {
+export async function fetchProductByCategoryId(
+  category_id: number
+): Promise<ProductData[]> {
   const result = await sql<ProductData[]>`
     SELECT * FROM products
     WHERE category_id = ${category_id};
   `;
-  return result
+  return result;
 }
 
 export const featureditemsData = async () => {
@@ -71,11 +75,11 @@ export const featureditemsData = async () => {
 
 export const allProductsData = async () => {
   try {
-    const data = await sql <
+    const data = await sql<
       ProductData[]
-    > `SELECT * FROM products ORDER BY product_name`;
+    >`SELECT * FROM products ORDER BY product_name`;
     return data;
   } catch (err) {
     console.error(err);
   }
-}
+};

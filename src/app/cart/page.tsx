@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useCart } from "@/context/CartContext";
+import Image from "next/image";
 
 export default function CartPage() {
   const { cart, removeFromCart } = useCart();
@@ -22,7 +23,9 @@ export default function CartPage() {
           >
             <div className="flex items-center gap-2">
               {product.image && (
-                <img
+                <Image
+                  width={20}
+                  height={20}
                   src={product.image}
                   alt={product.name}
                   className="w-20 h-20 object-cover rounded"

@@ -2,6 +2,7 @@
 import { useActionState, useState } from "react";
 import { sellProductData, ErrorState } from "lib/actions";
 import Spinner from "../loading/Spinner";
+import Image from "next/image";
 import { Category } from "lib/definition";
 
 const SellForm = ({ categories }: { categories: Category[] }) => {
@@ -13,11 +14,11 @@ const SellForm = ({ categories }: { categories: Category[] }) => {
     if (!file) return;
 
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append("image", file);
 
     try {
-      const res = await fetch('/api/uploads', {
-        method: 'POST',
+      const res = await fetch("/api/uploads", {
+        method: "POST",
         body: formData,
       });
 
@@ -34,7 +35,10 @@ const SellForm = ({ categories }: { categories: Category[] }) => {
     }
   }
 
-  const [state, formAction, isLoading] = useActionState(sellProductData, initialState);
+  const [state, formAction, isLoading] = useActionState(
+    sellProductData,
+    initialState
+  );
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -88,14 +92,16 @@ const SellForm = ({ categories }: { categories: Category[] }) => {
                 >
                   Your Product Image
                 </label>
-                <img src={image} alt="Your Product Image" className="w-full h-48 object-cover" />
+                <Image
+                  src={image}
+                  alt="Your Product Image"
+                  className="w-full h-48 object-cover"
+                />
               </div>
             )}
 
-
             {/* Hidden input to pass image URL to server action */}
             {image && <input type="hidden" name="image" value={image} />}
-
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
@@ -189,7 +195,9 @@ const SellForm = ({ categories }: { categories: Category[] }) => {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {categories.map((cat) => (
-                <option key={cat.category_id} value={cat.category_id}>{cat.category_name}</option>
+                <option key={cat.category_id} value={cat.category_id}>
+                  {cat.category_name}
+                </option>
               ))}
             </select>
           </div>

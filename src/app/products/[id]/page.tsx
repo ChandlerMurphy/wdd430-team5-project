@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import ProductPage from '@/app/ui/products/ProductPage';
 
 interface PageProps {
-  params: { id: string };
+  params: { id: number };
 }
 
 export default async function Page({ params }: PageProps) {
