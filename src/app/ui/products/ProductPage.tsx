@@ -6,10 +6,10 @@ import ReviewForm from '@/app/ui/review/ReviewForm';
 import PrimaryButton from '@/app/ui/component/PrimaryButton';
 import AddCartButton from '@/app/ui/component/AddCartButton';
 import Image from 'next/image';
-import ReviewList from '@/app/ui/review/ReviewList'
+import ReviewList from '@/app/ui/review/ReviewList';
 import AverageRating from '../review/Rating';
 import Link from 'next/link';
-
+import { useCart } from '@/context/CartContext';
 
 export default function ProductPage(
   {
@@ -21,7 +21,9 @@ export default function ProductPage(
   }
 ) {
   const [isOpen, setIsOpen] = useState(false);
-  const [succesMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const { addToCart } = useCart();
 
   return (
     <div className="max-w-screen-lg mx-auto">
@@ -59,10 +61,22 @@ export default function ProductPage(
             <p className="text-gray-600 mb-4 max-w-full md:max-w-xl"><b>Price:</b> ${product.price}</p>
             <p className="text-gray-600 mb-4 max-w-full md:max-w-xl"><b>Quantity:</b> {product.quantity} Pieces Left</p>
             <AverageRating reviews={reviews} />
-            <div className='mt-4'>
-              <AddCartButton />
-            </div>
 
+            <div className="mt-4">
+              <AddCartButton
+                onClick={() => {
+                  addToCart({
+                    id: String(product.product_id),      // mapeando product_id para id
+                    name: product.product_name,    // mapeando product_name para name
+                    price: Number(product.price),
+                    image: product.image ? `/${product.image}` : "/placeholder.png"
+                  });
+                  setSuccessMessage('Product added to cart!');
+                  setTimeout(() => setSuccessMessage(''), 3000);
+                }}
+              />
+              {successMessage && <p className="mt-2 text-green-600">{successMessage}</p>}
+            </div>
 
             {/* Reviews */}
             <div className="">
@@ -73,8 +87,9 @@ export default function ProductPage(
                   comment: r.comment,
                   date: new Date(r.created_at).toLocaleDateString(),
                 }))} />
-              ) : (<p className="text-gray-500 italic mt-5">No reviews yet.</p>)
-              }
+              ) : (
+                <p className="text-gray-500 italic mt-5">No reviews yet.</p>
+              )}
 
               {/* Add new review */}
               <PrimaryButton onClick={() => setIsOpen(true)}>Add a Review</PrimaryButton>

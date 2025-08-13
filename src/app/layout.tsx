@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { roboto } from "./ui/fonts";
 import Header from "./ui/component/header/Header";
+import { CartProvider } from "@/context/CartContext"; // importe o provider aqui
+
 export const metadata: Metadata = {
   title: "Handcrafted Haven",
   description:
@@ -16,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} `}>
-        <Header />
-        {children}
+        <CartProvider>
+          <Header />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
