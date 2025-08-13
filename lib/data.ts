@@ -73,13 +73,14 @@ export const featureditemsData = async () => {
   }
 };
 
-export const allProductsData = async () => {
+export const allProductsData = async (): Promise<ProductData[]> => {
   try {
-    const data = await sql<
-      ProductData[]
-    >`SELECT * FROM products ORDER BY product_name`;
+    const data = await sql<ProductData[]>`
+      SELECT * FROM products ORDER BY product_name
+    `;
     return data;
   } catch (err) {
     console.error(err);
+    return []; // return empty array instead of undefined
   }
 };

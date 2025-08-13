@@ -1,31 +1,19 @@
-// app/products/[id]/page.tsx
-import {
-  fetchProductById,
-  fetchReviewsByProductId,
-  allProductsData,
-} from "lib/data";
+import { fetchProductById, fetchReviewsByProductId } from "lib/data";
 import { notFound } from "next/navigation";
 import ProductPage from "@/app/ui/products/ProductPage";
 
-// 1. Generate static params for all products
-export async function generateStaticParams() {
-  const products = await allProductsData(); // fetch all products
-  return products?.map((product) => ({
-    id: product.product_id.toString(), // must be string
-  }));
-}
+// Mantemos o tipo como Promise
+type PageParams = Promise<{ id: string }>;
 
-// 2. Define PageProps type
-interface PageProps {
-  params: { id: string };
-}
+export default async function Page({ params }: { params: PageParams }) {
+  // Desestruturação aguardando a Promise
+  const { id } = await params;
 
-// 3. Page component
-export default async function Page({ params }: PageProps) {
-  const productId = Number(params.id); // convert string to number
+  const productId = parseInt(id, 10);
+  if (isNaN(productId)) notFound();
 
   const product = await fetchProductById(productId);
-  if (!product) notFound(); // 404 if product not found
+  if (!product) notFound();
 
   const reviews = await fetchReviewsByProductId(productId);
 
